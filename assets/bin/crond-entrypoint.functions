@@ -1,0 +1,8 @@
+function dump-docker-environment() {
+
+  # dump container environment
+  echo "#!/bin/bash" > /etc/profile.d/docker-environment.sh
+  env | grep -v "_=\|HOME\|SHLVL\|PWD\|PATH\|HOSTNAME\|affinity:container" |\
+    sed 's|\(.*\)=\(.*\)|export \1="\2"|' >> /etc/profile.d/docker-environment.sh
+
+}

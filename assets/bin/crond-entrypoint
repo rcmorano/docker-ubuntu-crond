@@ -1,0 +1,9 @@
+#!/bin/bash
+
+source /assets/bin/crond-entrypoint.functions
+dump-docker-environment
+
+echo "${CRON_STRING} 2>&1 >> ${LOG_STREAM}" >> /etc/cron.d/cronjob
+mkfifo ${LOG_STREAM} && chmod 777 ${LOG_STREAM}
+
+cron -f -L 8 2>&1 >> ${LOG_STREAM} | tail -f ${LOG_STREAM}

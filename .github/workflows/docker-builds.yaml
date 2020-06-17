@@ -23,6 +23,7 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
     - name: build-n-push
+      env:
         DOCKER_REGISTRY: docker.io
         DOCKER_IMAGE_NAME: rcmorano/ubuntu-crond:latest
         DOCKER_IMAGE_URI: ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}

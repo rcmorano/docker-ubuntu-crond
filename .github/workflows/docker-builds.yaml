@@ -2,7 +2,7 @@ name: docker builds
 on:
   push:
     paths:
-    - 'Dockerfile.*'
+    - 'Dockerfile*'
     - '.github/**'
   schedule:
     # * is a special character in YAML so you have to quote this string
